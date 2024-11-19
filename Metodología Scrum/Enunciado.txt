@@ -1,1 +1,0 @@
-Carpeta para gestionar todo lo que tiene que ver con la metodologia en base a mi proyecto.
