@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de la Institución</title>
+    <script>
+        function generarCampos() {
+            const contenedor = document.getElementById("grados-container");
+            contenedor.innerHTML = ""; // Limpiar contenedor
+
+            const numGrados = document.getElementById("numero_grados").value;
+            for (let i = 1; i <= numGrados; i++) {
+                const label = document.createElement("label");
+                label.textContent = `Nombre del Grado ${i}:`;
+
+                const input = document.createElement("input");
+                input.type = "text";
+                input.name = `grado_${i}`;
+                input.required = true;
+
+                contenedor.appendChild(label);
+                contenedor.appendChild(input);
+                contenedor.appendChild(document.createElement("br"));
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Configuración de la Institución</h1>
+    <form action="/configurar-institucion/" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id_usuario" value="{{ id_usuario }}">
+
+        <label for="nombre">Nombre de la Institución:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="lugar">Lugar:</label>
+        <input type="text" id="lugar" name="lugar" required><br><br>
+
+        <label for="imagen">Imagen de la Institución:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required><br><br>
+
+        <label for="numero_grados">Número de Grados:</label>
+        <input type="number" id="numero_grados" min="1" onchange="generarCampos()" required><br><br>
+
+        <div id="grados-container"></div> <!-- Campos dinámicos -->
+
+        <button type="submit">Guardar Configuración</button>
+    </form>
+</body>
+</html>
