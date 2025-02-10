@@ -1,14 +1,28 @@
-from fastapi import UploadFile
 from sqlalchemy.orm import Session
-from CapaAccesoDatos.institucion_repositorio import guardar_institucion, guardar_grado
+from CapaAccesoDatos.repositorios.institucion_repositorio import InstitucionRepositorio
 
-async def guardar_institucion_y_grados(db: Session, nombre: str, lugar: str, imagen: UploadFile, grados: list, id_usuario: int):
-    # Leer la imagen
-    imagen_data = await imagen.read()
 
-    # Guardar la institución con el id_usuario
-    institucion_id = guardar_institucion(db, nombre, lugar, imagen_data, id_usuario)
+class InstitucionLogica:
+    @staticmethod
+    def crear_institucion(db: Session, nombre: str, lugar: str, imagen_institucion: str, grados: list, id_usuario: int):
+        """
+        Lógica para crear una institución con grados.
+        """
+        # Verificar si el usuario ya tiene una institución registrada
+        if InstitucionRepositorio.obtener_institucion_por_usuario(db, id_usuario):
+            raise ValueError("El usuario ya tiene una institución registrada.")
+        
+        # Verificar si el usuario existe
+        usuario = InstitucionRepositorio.obtener_usuario(db, id_usuario)
+        if not usuario:
+            raise ValueError("Usuario no encontrado.")
 
-    # Guardar los grados asociados
-    for nombre_grado in grados:
-        guardar_grado(db, nombre_grado, institucion_id)
+        # Crear la institución
+        nueva_institucion = InstitucionRepositorio.crear_institucion(
+            db, nombre, lugar, imagen_institucion, id_usuario
+        )
+
+        # Crear los grados asociados
+        InstitucionRepositorio.crear_grados(db, grados, nueva_institucion.id_institucion)
+
+        return nueva_institucion

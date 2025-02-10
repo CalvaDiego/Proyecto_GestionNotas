@@ -1,0 +1,381 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column; /* Aseguramos que el header esté arriba */
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .header {
+    height: 60px;
+    background-color: #37515f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fijamos el header arriba */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Aseguramos que esté encima de todo */
+  }
+  
+  .header h1 {
+    font-size: 1.5em;
+  }
+  
+  .header-icons {
+    display: flex;
+    gap: 40px;
+    position: relative;
+  }
+  
+  .header-icons .icon {
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .header-icons .icon:hover {
+    transform: scale(1.2);
+    color: #ffcc00;
+  }
+  
+  .header-icons .icon.active-icon {
+    color: #ffcc00; /* Color cuando el panel está abierto */
+  }
+  
+  /* Dropdown */
+  .dropdown-container {
+    position: relative;
+  }
+  
+  .dropdown-container .dropdown-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    min-width: 300px;
+  }
+  
+  .dropdown-panel p {
+    margin: 5px 0;
+    font-size: 0.9em;
+  }
+  
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .logout-button:hover {
+    background-color: #d93636;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background-color: #37515f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    height: calc(100vh - 60px); /* Resta la altura del header */
+    position: fixed;
+    top: 60px; /* Comienza justo debajo del header */
+    left: 0;
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar.collapsed {
+    width: 80px;
+  }
+  
+  .menu-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  ul li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    margin-bottom: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s ease, padding-left 0.3s;
+    border-radius: 5px;
+  }
+  
+  ul li:hover,
+  ul li.active {
+    background-color: #2a3e48;
+  }
+  
+  .menu-icon {
+    font-size: 1.5em;
+  }
+  
+  .menu-text {
+    white-space: nowrap;
+  }
+  
+  .sidebar.collapsed ul li {
+    justify-content: center;
+  }
+  
+  .sidebar.collapsed .menu-text {
+    display: none;
+  }
+  
+  /* Content */
+  .content-wrapper {
+    margin-left: 250px; /* Asegura espacio para el menú lateral */
+    margin-top: 60px; /* Respeta el espacio del header */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Sin fondo */
+    height: calc(100vh - 60px); /* Ocupa toda la altura menos el header */
+    overflow-y: auto; /* Permite desplazamiento si es necesario */
+    border: none; /* Sin bordes */
+    transition: margin-left 0.3s ease;
+  }
+  
+  .sidebar.collapsed + .content-wrapper {
+    margin-left: 80px; /* Ajuste dinámico cuando el menú está colapsado */
+  }
+  
+  .content {
+    max-width: 100%;
+    text-align: center;
+    color: #37515f; /* Color del texto */
+    background: none; /* Sin fondo */
+    padding: 0; /* Elimina padding */
+    box-shadow: none; /* Sin sombras */
+  }
+  
+  .content h2 {
+    font-size: 2em;
+    color: #37515f;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /*/////////////////////////////////////////////////////////////*/
+/* Estilo para el menú desplegable de Grados */
+.menu-item {
+  position: relative;
+}
+
+/* Estilo del Submenú */
+.submenu {
+  display: none;
+  position: absolute;
+  left: 105.5%; /* Separa el submenú del menú principal */
+  top: 5px; /* Ajusta la alineación vertical */
+  background-color: #2a3e48; /* Fondo uniforme */
+  border-radius: 8px;
+  padding: 5px 8px;
+  width: 200px;
+  box-shadow: none; /* Elimina contorno */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Asegura alineación a la izquierda */
+  text-align: justify;
+  z-index: 10;
+}
+
+/* Flecha del Submenú */
+.submenu::before {
+  content: "";
+  position: absolute;
+  top: 10px; /* Ajusta para que esté alineado con el menú */
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #2a3e48; /* Mismo color del submenú */
+}
+
+/* Mantener el tamaño cuando el menú está colapsado */
+.sidebar.collapsed .submenu {
+  left: 120%; /* Mantiene la misma posición */
+  align-items: flex-start; /* Asegura alineación cuando está colapsado */
+  text-align: justify;
+}
+
+/* Mostrar submenú al hacer hover */
+.menu-item:hover .submenu {
+  display: flex;
+}
+
+/* Estilos de los elementos dentro del submenú */
+.submenu li {
+  padding: 3px 10px; /* Reduce el padding vertical */
+  margin: 1px 0; /* Reduce la separación entre elementos */
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease, padding 0.3s ease, text-align 0.3s ease;
+  text-align: justify;
+  white-space: nowrap; 
+  display: flex; 
+  align-items: center;
+  justify-content: flex-start; /*Mantiene el texto alineado en la izquierda */
+  border-radius: 5px;
+  width: 100%; /*Evita que el texto se desplace */
+}
+
+.submenu li:hover {
+  background-color: #1d2c34; /* Cambio de color al hacer hover */
+}
+
+.submenu-item {
+  display: flex;
+  justify-content: space-between; /* Mueve la flecha a la derecha */
+  align-items: center;
+  width: 100%;
+}
+
+.submenu-item .arrow {
+  font-size: 0.8rem;
+  margin-left: auto; /* Mueve la flecha completamente a la derecha */
+}
+
+/*///////////////////////////////////////////////////////////////////////*/
+/* Submenú de materias */
+.paralelos-submenu {
+  position: absolute;
+  left: 100%; /* Ubica el submenú de materias al lado derecho del grado */
+  top: 0; /* Se alineará dinámicamente en JavaScript */
+  background-color: #37515f;
+  border-radius: 8px;
+  padding: 5px 8px;
+  width: 180px;
+  display: none; /* Se oculta por defecto */
+  flex-direction: column;
+  box-shadow: none;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+/* Flecha del submenú de materias */
+.paralelos-submenu::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #37515f;
+}
+
+/* Asegurar que el submenú aparezca al hacer hover */
+.submenu-item {
+  position: relative;
+}
+
+.submenu-item:hover .paralelos-submenu {
+  display: flex;
+  transform: translateY(var(--dynamic-top, -4px)); /* Se desplazará dinámicamente */
+  opacity: 1;
+}
+
+.arrowUno {
+  font-size: 0.8rem;
+  margin-left: auto; /* Mueve la flecha completamente a la derecha */
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+.materias-submenu {
+  position: absolute;
+  left: 100%; /* Ubica el submenú de materias al lado derecho del grado */
+  top: 0; /* Se alineará dinámicamente en JavaScript */
+  background-color: #2a3e48;
+  border-radius: 8px;
+  padding: 5px 8px;
+  width: 150px;
+  display: none; /* Se oculta por defecto */
+  flex-direction: column;
+  box-shadow: none;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+/* Flecha del submenú de materias */
+.materias-submenu::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid #2a3e48;
+}
+
+/* Asegurar que el submenú aparezca al hacer hover */
+.submenu-itemUno {
+  position: relative;
+}
+
+.submenu-itemUno:hover .materias-submenu{
+  display: flex;
+  transform: translateY(var(--dynamic-top, -4px)); /* Se desplazará dinámicamente */
+  opacity: 1;
+}

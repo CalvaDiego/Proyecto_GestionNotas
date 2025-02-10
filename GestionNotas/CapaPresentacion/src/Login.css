@@ -1,0 +1,162 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e5e5e5;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.info {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.info h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #37515f;
+}
+
+.info p {
+    font-size: 1.3em;
+    color: #666;
+    margin-top: 10px;
+    max-width: 400px;
+}
+
+.login-box {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #333;
+    width: 600px;
+}
+
+/* Estilo para el contenedor de los inputs */
+.input-group {
+    margin-bottom: 20px;
+    position: relative; /* Permite posicionar elementos dentro del contenedor */
+}
+
+/* Estilo para los inputs */
+.login-box input[type="email"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1.1em;
+    outline: none;
+    background-color: #fefefe;
+}
+
+/* Botón principal */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    background-color: #37515f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #2a3f4a;
+}
+
+/* Enlace de "¿Olvidaste tu contraseña?" */
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin: 12px 0;
+    font-size: 1em;
+    color: #666;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Botón para crear cuenta */
+.create-account-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-account-button:hover {
+    background-color: #27ae60;
+}
+
+/* Ajustes generales */
+.login-box form {
+    position: relative; /* Asegura que el formulario mantenga su estructura */
+}
+
+/* Inputs normales */
+.login-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1.1em;
+    outline: none;
+    background-color: #fefefe;
+}
+
+/* Input con error */
+.input-error {
+    border-color: red !important; /* Fuerza el borde rojo */
+    background-color: #ffe6e6; /* Fondo rojo claro para resaltar el error */
+}
+
+/* Mensaje de éxito */
+.success-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+    text-align: center;
+}
+
+/* Mensajes de error */
+.error-message {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    top: 100%; /* Aparece debajo del input */
+    left: 50%; /* Centramos horizontalmente */
+    transform: translateX(-50%);
+    width: 100%; /* Ocupa el ancho del contenedor */
+    text-align: center; /* Centra el texto */
+}

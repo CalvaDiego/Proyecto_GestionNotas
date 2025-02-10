@@ -1,0 +1,231 @@
+.grados-container {
+  text-align: center;
+  padding: 3px;
+  width: 175vh;
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+ 
+}
+
+/* ✅ CONTENEDOR PRINCIPAL QUE CONTIENE LA TABLA */
+.table-wrapper {
+  width: 100%; /* ✅ Ajusta el ancho */
+  height: 85vh; /* ✅ Tamaño fijo en altura */
+  overflow: auto; /* ✅ Scroll automático si es necesario */
+  padding: 2px; /* ✅ Espaciado interno */
+  border-radius: 8px; /* ✅ Bordes redondeados */
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.agregar-button {
+  padding: 6px 10px;
+  cursor: pointer;
+  background-color: #37515f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.agregar-button:hover {
+  background-color: #2a3e48;
+}
+
+.add-btn {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.agregar-button svg, .add-btn svg {
+  margin-right: 5px; /* ✅ Espacio entre el icono y el texto */
+  vertical-align: middle;
+}
+
+/* ✅ CONTENEDOR CON SCROLL */
+.table-container {
+  width: 100%;
+  max-height: 400px; /* Altura máxima antes de activar el scroll */
+  overflow: auto; /* Activa el scroll horizontal y vertical */
+  border: 1px solid #ccc;
+}
+
+.calificaciones-table {
+  width: 100%;
+  min-width: 900px; /* ✅ Evita que la tabla sea demasiado pequeña */
+  border-collapse: collapse;
+  font-size: 9px;
+  border: 3px solid #ccc;
+}
+
+.calificaciones-table th,
+.calificaciones-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+
+.calificaciones-table th {
+  background-color: #2a3e48;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.estudiante-cell {
+  background-color: #37515f;
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  text-align: left !important;
+  cursor: text;
+}
+
+.estudiante-cell:focus {
+  outline: 2px solid #00bfff; /* ✅ Resalta la celda cuando está en edición */
+  background-color: #2a3e48;
+}
+
+.subactividad-cell {
+  background-color: #2a3e48;
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  text-align: center;
+  cursor: text; /* ✅ Indica que se puede editar */
+}
+
+.subactividad-cell:focus {
+  outline: 2px solid #00bfff; /* ✅ Resalta la celda cuando está en edición */
+  background-color: #37515f;
+}
+
+.nota-input {
+  width: 47px;
+  text-align: center;
+  padding: 3px;
+  font-size: 12px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+}
+
+.promedio-cell {
+  background-color: #eee;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/*Boton de eliminar*/
+.delete-cell {
+  text-align: center;
+  background-color: #fff;
+  width: 30px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.delete-btn:hover {
+  color: #d11a2a;
+}
+
+/* Menú Contextual Estilizado */
+.context-menu {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  list-style: none;
+  z-index: 1000;
+  border-radius: 5px;
+  width: 204px;
+  height: 40px;
+  text-transform: capitalize;
+}
+
+.context-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.context-menu li:hover {
+  background-color: #ddd;
+}
+
+/*Tab bar de trimestres*/
+/* ✅ Contenedor de los Tabs dentro de la tabla */
+.tab-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px;
+  background-color: #2a3e48; /* ✅ Fondo acorde al diseño del proyecto */
+  border-radius: 12px;
+  margin-bottom: 10px; /* Espaciado entre tabs y tabla */
+  width: 50%;
+}
+
+/* ✅ Estilos para los botones de los Tabs */
+.tab-button {
+  padding: 8px 20px;
+  border: none;
+  background-color: #37515f; /* ✅ Color del fondo de los tabs */
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* ✅ Tab activo */
+.tab-button.active {
+  background-color: #00ffeac6; /* ✅ Color de activación basado en tu esquema */
+  
+}
+
+/*Para la tabla Calificacion Anual*/
+.non-editable {
+  background-color: #bbb; /* Amarillo */
+  text-align: center;
+  font-weight: bold;
+}
+
+.esnon-editable {
+  background-color: #37515f;
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  text-align: left !important;
+  cursor: text;
+}
+
+/* Estilo para celdas calculadas automáticamente */
+.calculated-cell {
+  background-color: #eee; /* Azul claro */
+  text-align: center;
+  font-weight: bold;
+}
