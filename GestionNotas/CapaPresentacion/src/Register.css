@@ -1,0 +1,131 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .register-container h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #37515f;
+    margin-bottom: 20px;
+  }
+  
+  .register-box {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid #333;
+    padding: 40px;
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .register-box h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .register-input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1.1em;
+    outline: none;
+    background-color: #fefefe;
+  }
+  
+  .input-container {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .error-message {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+    position: relative;
+  }
+  
+  /* Inputs con error */
+  .input-error {
+    border-color: red;
+  }
+  
+  .gender-field {
+    margin: 14px 0;
+    text-align: center;
+  }
+  
+  .gender-field label {
+    margin-right: 20px;
+    font-size: 1em;
+  }
+  
+  .register-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #27ae60;
+  }
+  
+  .login-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 1em;
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start; /* Asegura la alineación superior */
+  }
+  
+  .name-fields div {
+    flex: 1;
+    position: relative; /* Necesario para posicionar correctamente el mensaje */
+  }

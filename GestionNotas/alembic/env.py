@@ -3,8 +3,8 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 
 # Importar la configuración de la base de datos y los modelos
-from CapaBaseDatos.models import *
-from CapaBaseDatos.database import Base
+from CapaAccesoDatos.BaseDatos.models import *
+from CapaAccesoDatos.BaseDatos.database import Base
 from dotenv import load_dotenv
 import os
 
